@@ -1,0 +1,21 @@
+
+{% if tab is not empty %}
+{% for i in tab %}
+<tr>
+					<td>{{ i.id }}</td></br>
+					<td>{{ i.picture }}</td></br>
+					<td>{{ i.username}}</td></br>
+					<td>{{ i.email }}</td></br>
+					<td>{{ i.nb_books }}</td></br>
+</tr>
+{{i.username|upper }}
+<img src="{{i.picture}}" alt="" >
+<a href="{{path('auhtorDetails', {'id':i.username  ~ '-' ~ i.email ~ '-' ~ i.nb_books})}}">details</a>
+
+{%if( i.nb_books > 0)%}
+<td>{{ i.username }}</td> <input type="button" value="buy" /></br>
+{%endif%}
+{%endfor%}
+<p>Total Authors: {{ tab|length }}</p>
+<h1>totalBooks: {{ totalBooks }}</h1>
+{%endif%}
